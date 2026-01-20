@@ -1,0 +1,121 @@
+# H1: Should Tero wear a helmet?
+
+
+### Braiterman et al 2020: Threat Modeling Manifesto
+
+* **Proactive Security**: Threat modeling is a process for identifying security and privacy risks early in the lifecycle so they can be addressed before a breach occurs.
+* **The 4 Questions**: The framework focuses on answering: What are we working on? What can go wrong? What are we going to do about it? Did we do a good enough job?
+* **Values over Tools**: It prioritizes people and collaborative dialogue over specific software or rigid, check-box processes.
+* **Continuous Journey**: Inspired by the Agile Manifesto, it is an iterative process that must be updated as the project and threats grow.
+* **My Idea**: In a team setting, these four questions could serve as a "Definition of Done" for any new feature to ensure security is never forgotten during development.
+
+### Shostack 2022: World's Shortest Threat Modeling Course
+
+* **Collaboration**: Effective modeling starts with simple sketches or Data Flow Diagrams (DFDs) to visualize how data moves.
+* **STRIDE Framework**: Shostack uses the STRIDE mnemonic to categorize threats: **S**poofing, **T**ampering, **R**epudiation, **I**nformation disclosure, **D**enial of service, and **E**levation of privilege.
+* **Handling Threats**: Every identified threat must be addressed with operational controls; it should never be ignored or left unmanaged.
+* **Low Barrier**: You don't need to be a security expert to start; a whiteboard and a basic understanding of your system are sufficient.
+* **Question**: How can we gamify the STRIDE process to make it more engaging for developers who might see security meetings as a distraction?
+
+### OWASP: Threat Modeling Cheat Sheet
+
+* **Trust Boundaries**: A critical technical concept marking where data moves from an untrusted zone (the internet) to a trusted system.
+* **Decomposition**: Breaking down the application allows teams to understand trust levels and communication patterns before writing code.
+* **Risk Ranking**: Risks should be prioritized by evaluating the Likelihood of an attack and the potential Impact (Likelihood x Impact).
+* **Cloud Security**: Modern models must account for the "Shared Responsibility" model, knowing what is secured by the provider versus the customer.
+* **Idea**: For a startup with limited resources, focusing almost entirely on securing "Trust Boundaries" provides the highest security return on investment.
+
+### Darknet Diaries — Ep 117: Mariposa (Daniel Kelley Story)
+
+* **The Story**: Follows Daniel Kelley, a teen who turned to malicious hacking after being targeted himself and then ignored by companies he tried to help ethically.
+* **The Slip-up**: Despite his technical skill, he was caught due to simple mistakes: failing to use Tor/VPN for one hack and reusing a Bitcoin address for an extortion attempt.
+* **Redemption**: While on bail for four years, he reported over 5,000 vulnerabilities to major organizations like GCHQ and the UN to mitigate his sentence.
+* **My Idea**: It is interesting to see human nature here; if people do not feel valued for their positive contributions, they can easily turn toward negative behaviors.
+* **My Question**: If those Fortune 500 companies had simply responded with a "Thank You" early on, could they have saved $70 million in future damages?
+
+---
+
+## a) Security hygiene
+
+These basic practices act as a "helmet" for everyone, reducing risk before a full threat model is even needed:
+
+* **Password Management**: Use unique, long, and random passwords for every account to prevent credential stuffing.
+* **Multi-Factor Authentication (MFA)**: Enable MFA on all critical accounts, prioritizing authentication apps over SMS.
+* **Automatic Updates**: Ensure all operating systems, browsers, and applications are set to auto-update to patch vulnerabilities immediately.
+* **Encryption**: Use full-disk encryption like BitLocker or FileVault to protect data if hardware is lost or stolen.
+* **The 3-2-1 Backup Rule**: Maintain 3 copies of data, on 2 media types, with 1 copy kept offline or off-site.
+* **Least Privilege**: In companies, ensure employees only have access to the specific data required for their job.
+
+---
+
+## b) Make-belief boogie-man: ShareMyRide Threat Model
+
+**The Company**: *ShareMyRide* is a ride-sharing service for university students.
+
+### (1) What are we working on?
+
+* 
+**Assets**: Student school credentials, real-time GPS locations, and payment processing tokens.
+
+
+* 
+**Prioritization**: Student safety and PII (Personally Identifiable Information) are the "crown jewels".
+
+
+* 
+**System Diagram**: Mobile App (iOS/Android)  Cloud API  Student Database.
+
+
+* 
+**Touchpoints**: Users log in with school credentials to find rides; payments are split and processed automatically within the app.
+
+
+
+### (2) What can go wrong? (Using STRIDE)
+
+* **Spoofing**: An attacker steals school credentials to pretend to be a trusted student driver to gain physical access to passengers.
+* 
+**Information Disclosure**: A leak in the database exposes student home addresses and frequent travel patterns.
+
+
+* 
+**Denial of Service**: An attacker floods the API, crashing the app during a busy commute, leaving students stranded and damaging trust.
+
+
+* **Risk (Expected Value)**: A serious data breach fine of €50,000 with a 10% probability = **€5,000 expected risk value**.
+
+### (3) What are we going to do about it? (Using META)
+
+* **Mitigate**: Use Multi-Factor Authentication and regular security audits to reduce the risk of spoofing and unauthorized access.
+* **Eliminate**: Automatically delete GPS logs after a trip is completed to remove the possibility of leaking sensitive movement history.
+* **Transfer**: Use a third-party service like Stripe for payments so ShareMyRide never stores actual credit card numbers.
+* 
+**Accept**: Accept the risk of minor, non-security-related app bugs while focusing all resources on protecting the core user database.
+
+
+
+### (4) Did we do a good enough job?
+
+* 
+**Audit**: We will undergo annual legal and security assessments to ensure we comply with GDPR and local transportation laws.
+
+
+* 
+**Continuous Testing**: The development team will partner with software experts for regular vulnerability scans and usability testing.
+
+
+
+---
+
+**Sources**:
+
+* Karvinen 2024: Information Security Course, [terokarvinen.com](https://terokarvinen.com/information-security/)
+* Braiterman et al. 2020: Threat Modeling Manifesto
+* Shostack 2022: Shortest Threat Modeling Course
+* OWASP: Threat Modeling Cheat Sheet
+* Darknet Diaries Ep. 117 (Daniel Kelley Transcript)
+* ShareMyRide Business Report (Dilanka Pallewatta et al., 2024) 
+
+
+
+**Would you like me to help you draft the next part of your assignment focusing on the Cyber Kill Chain?**
