@@ -1,121 +1,157 @@
-# H1: Should Tero wear a helmet?
+# h1 - Should Tero wear a helmet?
 
+a) Read, watch, and summarize
 
-### Braiterman et al 2020: Threat Modeling Manifesto
+## Braiterman et al 2020: Threat Modeling Manifesto
 
-* **Proactive Security**: Threat modeling is a process for identifying security and privacy risks early in the lifecycle so they can be addressed before a breach occurs.
-* **The 4 Questions**: The framework focuses on answering: What are we working on? What can go wrong? What are we going to do about it? Did we do a good enough job?
-* **Values over Tools**: It prioritizes people and collaborative dialogue over specific software or rigid, check-box processes.
-* **Continuous Journey**: Inspired by the Agile Manifesto, it is an iterative process that must be updated as the project and threats grow.
-* **My Idea**: In a team setting, these four questions could serve as a "Definition of Done" for any new feature to ensure security is never forgotten during development.
+Threat modeling is a proactive way to find security and privacy risks before a system is built or attacked.
 
-### Shostack 2022: World's Shortest Threat Modeling Course
+The four main questions are:
 
-* **Collaboration**: Effective modeling starts with simple sketches or Data Flow Diagrams (DFDs) to visualize how data moves.
-* **STRIDE Framework**: Shostack uses the STRIDE mnemonic to categorize threats: **S**poofing, **T**ampering, **R**epudiation, **I**nformation disclosure, **D**enial of service, and **E**levation of privilege.
-* **Handling Threats**: Every identified threat must be addressed with operational controls; it should never be ignored or left unmanaged.
-* **Low Barrier**: You don't need to be a security expert to start; a whiteboard and a basic understanding of your system are sufficient.
-* **Question**: How can we gamify the STRIDE process to make it more engaging for developers who might see security meetings as a distraction?
+1. What are we working on?
+2. What can go wrong?
+3. What are we going to do about it?
+4. Did we do a good enough job?
 
-### OWASP: Threat Modeling Cheat Sheet
+The approach values people and discussion over strict tools and checklists. It is meant to be continuous rather than a one-time activity.
 
-* **Trust Boundaries**: A critical technical concept marking where data moves from an untrusted zone (the internet) to a trusted system.
-* **Decomposition**: Breaking down the application allows teams to understand trust levels and communication patterns before writing code.
-* **Risk Ranking**: Risks should be prioritized by evaluating the Likelihood of an attack and the potential Impact (Likelihood x Impact).
-* **Cloud Security**: Modern models must account for the "Shared Responsibility" model, knowing what is secured by the provider versus the customer.
-* **Idea**: For a startup with limited resources, focusing almost entirely on securing "Trust Boundaries" provides the highest security return on investment.
-
-### Darknet Diaries — Ep 117: Mariposa (Daniel Kelley Story)
-
-* **The Story**: Follows Daniel Kelley, a teen who turned to malicious hacking after being targeted himself and then ignored by companies he tried to help ethically.
-* **The Slip-up**: Despite his technical skill, he was caught due to simple mistakes: failing to use Tor/VPN for one hack and reusing a Bitcoin address for an extortion attempt.
-* **Redemption**: While on bail for four years, he reported over 5,000 vulnerabilities to major organizations like GCHQ and the UN to mitigate his sentence.
-* **My Idea**: It is interesting to see human nature here; if people do not feel valued for their positive contributions, they can easily turn toward negative behaviors.
-* **My Question**: If those Fortune 500 companies had simply responded with a "Thank You" early on, could they have saved $70 million in future damages?
+My idea: These four questions could be used as a definition of done for new features in software development.
 
 ---
 
-## a) Security hygiene
+## Shostack 2022: Worlds Shortest Threat Modeling Course
 
-These basic practices act as a "helmet" for everyone, reducing risk before a full threat model is even needed:
+Threat modeling starts with simple drawings or data flow diagrams to show how information moves in a system.
 
-* **Password Management**: Use unique, long, and random passwords for every account to prevent credential stuffing.
-* **Multi-Factor Authentication (MFA)**: Enable MFA on all critical accounts, prioritizing authentication apps over SMS.
-* **Automatic Updates**: Ensure all operating systems, browsers, and applications are set to auto-update to patch vulnerabilities immediately.
-* **Encryption**: Use full-disk encryption like BitLocker or FileVault to protect data if hardware is lost or stolen.
-* **The 3-2-1 Backup Rule**: Maintain 3 copies of data, on 2 media types, with 1 copy kept offline or off-site.
-* **Least Privilege**: In companies, ensure employees only have access to the specific data required for their job.
+The STRIDE model is used to identify threats:
+Spoofing
+Tampering
+Repudiation
+Information disclosure
+Denial of service
+Elevation of privilege
 
----
+Every identified threat should be handled in some way and not ignored.
 
-## b) Make-belief boogie-man: ShareMyRide Threat Model
+You do not need to be a security expert to start, just a basic understanding of the system.
 
-**The Company**: *ShareMyRide* is a ride-sharing service for university students.
-
-### (1) What are we working on?
-
-* 
-**Assets**: Student school credentials, real-time GPS locations, and payment processing tokens.
-
-
-* 
-**Prioritization**: Student safety and PII (Personally Identifiable Information) are the "crown jewels".
-
-
-* 
-**System Diagram**: Mobile App (iOS/Android)  Cloud API  Student Database.
-
-
-* 
-**Touchpoints**: Users log in with school credentials to find rides; payments are split and processed automatically within the app.
-
-
-
-### (2) What can go wrong? (Using STRIDE)
-
-* **Spoofing**: An attacker steals school credentials to pretend to be a trusted student driver to gain physical access to passengers.
-* 
-**Information Disclosure**: A leak in the database exposes student home addresses and frequent travel patterns.
-
-
-* 
-**Denial of Service**: An attacker floods the API, crashing the app during a busy commute, leaving students stranded and damaging trust.
-
-
-* **Risk (Expected Value)**: A serious data breach fine of €50,000 with a 10% probability = **€5,000 expected risk value**.
-
-### (3) What are we going to do about it? (Using META)
-
-* **Mitigate**: Use Multi-Factor Authentication and regular security audits to reduce the risk of spoofing and unauthorized access.
-* **Eliminate**: Automatically delete GPS logs after a trip is completed to remove the possibility of leaking sensitive movement history.
-* **Transfer**: Use a third-party service like Stripe for payments so ShareMyRide never stores actual credit card numbers.
-* 
-**Accept**: Accept the risk of minor, non-security-related app bugs while focusing all resources on protecting the core user database.
-
-
-
-### (4) Did we do a good enough job?
-
-* 
-**Audit**: We will undergo annual legal and security assessments to ensure we comply with GDPR and local transportation laws.
-
-
-* 
-**Continuous Testing**: The development team will partner with software experts for regular vulnerability scans and usability testing.
-
-
+My question: How could STRIDE be turned into a game to make it more interesting for developers?
 
 ---
 
-**Sources**:
+## OWASP: Threat Modeling Cheat Sheet
 
-* Karvinen 2024: Information Security Course, [terokarvinen.com](https://terokarvinen.com/information-security/)
-* Braiterman et al. 2020: Threat Modeling Manifesto
-* Shostack 2022: Shortest Threat Modeling Course
-* OWASP: Threat Modeling Cheat Sheet
-* Darknet Diaries Ep. 117 (Daniel Kelley Transcript)
-* ShareMyRide Business Report (Dilanka Pallewatta et al., 2024) 
+Trust boundaries show where data moves from an untrusted area like the internet into a trusted system.
+
+Breaking a system into smaller parts helps teams understand security better before writing code.
+
+Risks should be ranked based on likelihood and impact.
+
+In cloud environments, security follows a shared responsibility model between provider and user.
+
+My idea: A small startup should focus mainly on securing trust boundaries for the best security benefit.
+
+---
+
+## Darknet Diaries Episode 117: Mariposa
+
+The story follows Daniel Kelley, a teenager who began hacking after being attacked online and ignored by companies he tried to help.
+
+He was caught because of small mistakes, such as not always using Tor or a VPN and reusing a Bitcoin address.
+
+While on bail, he reported more than 5000 vulnerabilities to organizations like GCHQ and the UN.
+
+My idea: People who feel unappreciated may turn from good behavior to bad behavior.
+
+My question: If companies had simply said thank you, could they have avoided millions of dollars in damages?
+
+---
+
+## b) Security hygiene
+
+These are basic security practices that protect users before full threat modeling is needed.
+
+Password management: Use long and unique passwords for every account.
+Multi-factor authentication: Use an authentication app instead of SMS when possible.
+Automatic updates: Keep all devices and software up to date.
+Encryption: Use full disk encryption on laptops and phones.
+3-2-1 backup rule: Three copies of data, on two types of media, with one copy off-site.
+Least privilege: Users should only have access to what they need for their work.
+
+---
+
+## c) ShareMyRide Threat Model
+
+ShareMyRide is a ride-sharing service for university students.
+
+### 1) What are we working on?
+
+Assets:
+Student school credentials
+Real-time GPS locations
+Payment processing data
+
+Priorities:
+Student safety
+Personally identifiable information
+
+System overview:
+Mobile app to cloud API to student database
+
+Users log in with school credentials, find rides, and split payments inside the app.
+
+---
+
+### 2) What can go wrong?
+
+Spoofing: An attacker steals credentials and pretends to be a student driver.
+
+Information disclosure: A data leak exposes student home addresses and travel patterns.
+
+Denial of service: An attacker overloads the system and crashes the app during busy hours.
+
+Risk calculation:
+Possible fine 50000 euros
+Probability 10 percent
+Expected risk 5000 euros
+
+---
+
+### 3) What are we going to do about it?
+
+Mitigate:
+Use multi-factor authentication
+Conduct regular security audits
+
+Eliminate:
+Delete GPS data automatically after each trip
+
+Transfer:
+Use Stripe for payments so ShareMyRide does not store credit card data
+
+Accept:
+Allow minor non-security bugs while protecting the main database
+
+---
+
+### 4) Did we do a good enough job?
+
+Audit:
+Annual security and legal reviews to follow GDPR rules
+
+Continuous testing:
+Regular vulnerability scans and usability testing
+
+---
+
+## References
+
+Karvinen 2024: Information Security Course
+Braiterman et al 2020: Threat Modeling Manifesto
+Shostack 2022: Worlds Shortest Threat Modeling Course
+OWASP: Threat Modeling Cheat Sheet
+Darknet Diaries Episode 117 Mariposa
+ShareMyRide Business Report Dilanka Pallewatta et al 2024
 
 
 
-**Would you like me to help you draft the next part of your assignment focusing on the Cyber Kill Chain?**
