@@ -1,0 +1,30 @@
+Tactics, Techniques, and Procedures (TTPs)
+Source: MITRE ATT&CK FAQ and Enterprise Matrix
+
+While the Kill Chain is a timeline of the attack, MITRE ATT&CK is like a giant list of every "trick" hackers use.
+
+1. Tactic (The "Goal")
+Definition: This is the "Why." It is the big-picture goal the hacker is trying to achieve right now.
+
+Example: Discovery. The hacker is already inside, but they don't know where the important files are yet. Their goal is to "look around" the network.
+
+2. Technique & Sub-technique (The "Method")
+Technique: This is the "How." It is the specific way they reach their goal.
+
+Sub-technique: An even more specific version of that way.
+
+Example (Technique): Account Discovery. The hacker looks for a list of all the usernames on the computer.
+
+Example (Sub-technique): Domain Account. Specifically, they are looking for a list of "Admin" accounts on the whole company network, not just the one computer they are on.
+
+3. Procedure (The "Action")
+Definition: This is the "What." It is the exact tool or command a specific hacker used in a real attack.
+
+Example: A group called "APT29" (a famous Russian hacker group) was caught using a specific command: net group "domain admins" /domain. This exact line of code is their Procedure.
+
+Sources
+Class Info: Tero Karvinen's Trust to Trust Course
+
+Main Article: Hutchins et al. (2011). Intelligence-Driven Computer Network Defense.
+
+Tech Reference: MITRE ATT&CK Website
